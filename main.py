@@ -19,3 +19,23 @@ plt.style.use('dark_background')
 # encoder
 encoder = OneHotEncoder()
 encoder.fit([[0], [1]])  # 0- tumor 1-Normal
+
+# importing the images data
+# This cell updates result list for images with tumor
+data = []
+paths = []
+result = []
+
+# content from google drive aaaar.......@gmail.com
+for r, d, f in os.walk(r'/content/drive/MyDrive/ARK/2'):
+    for file in f:
+        if '.bmp' in file:
+            paths.append(os.path.join(r, file))
+
+for path in paths:
+    img = Image.open(path)
+    img = img.resize((128, 128))
+    img = np.array(img)
+    if(img.shape == (128, 128, 3)):
+        data.append(np.array(img))
+        result.append(encoder.transform([[0]]).toarray())
