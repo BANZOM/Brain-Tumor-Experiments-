@@ -14,3 +14,8 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 plt.style.use('dark_background')
+
+
+# encoder
+encoder = OneHotEncoder()
+encoder.fit([[0], [1]])  # 0- tumor 1-Normal
